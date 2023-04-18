@@ -1,9 +1,7 @@
-export type TEvent = {
-  [key in ListenerEventName]: (data?: any) => void;
-};
-
 export type VoidFunction = () => void;
 export type VoidCallback = (cb: VoidFunction) => void;
+export type DefaultEvent = { name: string; data: any };
+export type DefaultEventListener = (x: { name: string; data: any }) => void;
 
 export interface IData {
   amount: number;

@@ -1,10 +1,24 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import { IData, ILibrary, ListenerEventName, VoidFunction } from './typings';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useRef,
+  useState,
+} from 'react';
+import {
+  DefaultEventListener,
+  IData,
+  ILibrary,
+  ListenerEventName,
+  VoidFunction,
+} from './typings';
 
-const KkiapayContext = createContext<ILibrary>({
+const KkiapayContext = createContext<
+  ILibrary & { addEventListener: (cb: DefaultEventListener) => void }
+>({
   openKkiapayWidget: () => {},
   closeKkiapayWidget: () => {},
   addSuccessListener: (cb: (data?: any) => void) => {
@@ -31,6 +45,7 @@ const KkiapayContext = createContext<ILibrary>({
     console.log(event, cb);
   },
   onNetworkStateChanged: () => {},
+  addEventListener: () => {},
 });
 
 export const useKkiapay = () => useContext(KkiapayContext);
@@ -41,6 +56,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
   const [widgetOpened, isWidgetOpened] = useState(false);
   const [uri, setUri] = useState(WIDGET_URI);
   const [callbacks, setCallbacks] = useState<Record<string, any>>({});
+  const defaultEvent = useRef<DefaultEventListener>(() => {});
 
   function registerCallback<T>(name: ListenerEventName, cb: T) {
     setCallbacks((callbacks) => ({ ...callbacks, [name]: cb }));
@@ -121,10 +137,16 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
       registerCallback(ListenerEventName.PAYMENT_FAILED, cb);
   };
 
+  const addEventListener = (cb: DefaultEventListener) => {
+    defaultEvent.current = cb;
+  };
+
   const handleMessage = (message: any) => {
     if (message && message.nativeEvent && message.nativeEvent.data) {
       const response = JSON.parse(message.nativeEvent.data);
       const event = response.name as ListenerEventName;
+      if (defaultEvent.current)
+        defaultEvent.current({ name: event, data: response.data });
       if (event in callbacks) {
         console.log(
           event,
@@ -157,6 +179,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
         addPaymentEndListener,
         addKkiapayListener,
         removeKkiapayListener,
+        addEventListener,
       }}
     >
       {widgetOpened && (
