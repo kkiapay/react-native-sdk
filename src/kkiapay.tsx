@@ -50,7 +50,7 @@ const KkiapayContext = createContext<
 
 export const useKkiapay = () => useContext(KkiapayContext);
 
-const WIDGET_URI = 'https://goofy-toothpaste.surge.sh?';
+const WIDGET_URI = 'https://widget-v3.kkiapay.me?';
 
 export function KkiapayProvider({ children }: PropsWithChildren<any>) {
   const [widgetOpened, isWidgetOpened] = useState(false);
