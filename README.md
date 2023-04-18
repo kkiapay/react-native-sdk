@@ -61,8 +61,56 @@ export default function TestComponent() {
 ```
 
 ```ts
-// KkiapayProvider's context type
-export interface ILibrary {
+// Types
+type VoidFunction = () => void;
+type VoidCallback = (cb: VoidFunction) => void;
+type DefaultEvent = { name: string; data: any };
+type DefaultEventListener = (x: { name: string; data: any }) => void;
+
+interface IData {
+  amount: number;
+  theme?: string;
+  countries?: string[];
+  paymentMethods?: string[];
+  paymentmethod?: string[];
+  fullname?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  sandbox?: boolean;
+  position?: string;
+  key?: string;
+  data?: string;
+  api_key?: string;
+  publicAPIKey?: string;
+  callback?: string;
+  url?: string;
+  direct?: string;
+  split?: string;
+  partnerId?: string;
+}
+interface ListenerData {
+  transactionId: string;
+  flwRef?: string;
+}
+enum ListenerEventName {
+  NETWORK_STATE_CHANGED = 'NETWORK_STATE_CHANGED',
+  INIT_WIDGET = 'INIT_WIDGET',
+  WIDGET_SUCCESSFULLY_INIT = 'WIDGET_SUCCESSFULLY_INIT',
+  CLOSE_WIDGET = 'CLOSE_WIDGET',
+  DESTROY_WIDGET = 'DESTROY_WIDGET',
+  WIDGET_SUCCESSFULLY_DESTROYED = 'WIDGET_SUCCESSFULLY_DESTROYED',
+  PAYMENT_INIT = 'PAYMENT_INIT',
+  PAYMENT_ABORTED = 'PAYMENT_ABORTED',
+  PENDING_PAYMENT = 'PENDING_PAYMENT',
+  ON_USER_FEEDBACK = 'ON_USER_FEEDBACK',
+  PAYMENT_FAILED = 'PAYMENT_FAILED',
+  PAYMENT_SUCCESS = 'PAYMENT_SUCCESS',
+  PAYMENT_END = 'PAYMENT_END',
+  RETRY_PAYMENT = 'RETRY_PAYMENT',
+}
+
+interface ILibrary {
   openKkiapayWidget: (configs: IData) => void;
   closeKkiapayWidget: () => void;
   addSuccessListener: (cb: (data?: any) => void) => void;
