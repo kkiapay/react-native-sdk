@@ -49,6 +49,7 @@ export default function TestComponent() {
       amount: 100,
       key: '3425dc6035d711eca8f5b92f2997955b',
       sandbox: true,
+      reason: "A reason"
     });
   };
 
