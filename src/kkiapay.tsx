@@ -1,6 +1,8 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
+
+import React from 'react';
 import {
   createContext,
   PropsWithChildren,

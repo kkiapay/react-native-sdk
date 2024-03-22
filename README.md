@@ -88,6 +88,7 @@ interface IData {
   direct?: string;
   split?: string;
   partnerId?: string;
+  reason: string;
 }
 interface ListenerData {
   transactionId: string;
