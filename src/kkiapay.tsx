@@ -1,19 +1,21 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
+
+import React from 'react';
 import {
   createContext,
-  PropsWithChildren,
+  type PropsWithChildren,
   useContext,
   useRef,
   useState,
 } from 'react';
 import {
-  DefaultEventListener,
-  IData,
-  ILibrary,
+  type DefaultEventListener,
+  type IData,
+  type ILibrary,
   ListenerEventName,
-  VoidFunction,
+  type VoidFunction,
 } from './typings';
 
 const KkiapayContext = createContext<
@@ -55,11 +57,12 @@ const WIDGET_URI = 'https://widget-v3.kkiapay.me?';
 export function KkiapayProvider({ children }: PropsWithChildren<any>) {
   const [widgetOpened, isWidgetOpened] = useState(false);
   const [uri, setUri] = useState(WIDGET_URI);
-  const [callbacks, setCallbacks] = useState<Record<string, any>>({});
+  const [callbacks] = useState<Record<string, any>>({});
   const defaultEvent = useRef<DefaultEventListener>(() => {});
 
   function registerCallback<T>(name: ListenerEventName, cb: T) {
-    setCallbacks((callbacks) => ({ ...callbacks, [name]: cb }));
+    callbacks[name] = cb;
+    //setCallbacks((callbacks) => ({ ...callbacks, [name]: cb }));
   }
 
   const openKkiapayWidget = (config: IData) => {

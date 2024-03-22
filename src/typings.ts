@@ -24,6 +24,7 @@ export interface IData {
   direct?: string;
   split?: string;
   partnerId?: string;
+  reason: string;
 }
 export interface ListenerData {
   transactionId: string;

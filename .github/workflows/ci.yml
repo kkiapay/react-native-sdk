@@ -11,6 +11,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Enable corepack
+        run: corepack enable
+        
       - name: Checkout
         uses: actions/checkout@v3
 
