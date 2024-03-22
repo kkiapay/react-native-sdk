@@ -11,14 +11,14 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Enable corepack
+        run: corepack enable
+        
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup
         uses: ./.github/actions/setup
-
-      - name: Enable corepack
-        run: corepack enable
 
       - name: Lint files
         run: yarn lint
