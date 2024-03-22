@@ -5,17 +5,17 @@ import { Buffer } from 'buffer';
 import React from 'react';
 import {
   createContext,
-  PropsWithChildren,
+  type PropsWithChildren,
   useContext,
   useRef,
   useState,
 } from 'react';
 import {
-  DefaultEventListener,
-  IData,
-  ILibrary,
+  type DefaultEventListener,
+  type IData,
+  type ILibrary,
   ListenerEventName,
-  VoidFunction,
+  type VoidFunction,
 } from './typings';
 
 const KkiapayContext = createContext<
