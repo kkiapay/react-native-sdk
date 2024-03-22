@@ -17,6 +17,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Enable corepack
+        run: corepack enable
+
       - name: Lint files
         run: yarn lint
 
