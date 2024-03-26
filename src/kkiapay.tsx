@@ -3,6 +3,9 @@ import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
 
 import React from 'react';
+
+console.log(React);
+
 import {
   createContext,
   type PropsWithChildren,
