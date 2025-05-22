@@ -45,6 +45,7 @@ export enum ListenerEventName {
   PAYMENT_SUCCESS = 'PAYMENT_SUCCESS',
   PAYMENT_END = 'PAYMENT_END',
   RETRY_PAYMENT = 'RETRY_PAYMENT',
+  WAVE_LINK = 'WAVE_LINK',
 }
 
 export interface ILibrary {
@@ -61,10 +62,17 @@ export interface ILibrary {
   addFailedListener: (cb: (data?: any) => void) => void;
   addPaymentEndListener: VoidCallback;
   removeKkiapayListener: (event: 'success' | 'failed') => void;
-
   addKkiapayListener: (
     event: 'success' | 'failed',
     cb: (data?: any) => void
   ) => void;
   onNetworkStateChanged: VoidCallback;
 }
+
+//Ware redirect URIs
+export const WAVE_REDIRECT_URI = 'wave:';
+export const PLAY_STORE_REDIRECT_URI = 'https://play.google.com';
+export const WAVE_STORE_REDIRECT_URI = 'market://details?id=com.wave.personal';
+export const APP_STORE_REDIRECT_URI =
+  'https://apps.apple.com/app/wave-mobile-money/id1523884528';
+export const WAVE_LINK = 'WAVE_LINK';

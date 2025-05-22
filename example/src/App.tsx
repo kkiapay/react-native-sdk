@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // import { StyleSheet } from 'react-native';
-import { KkiapayProvider } from 'src';
+import { KkiapayProvider } from 'src/kkiapay';
 import TestComponent from './TestComponent';
 
 export default function App() {
