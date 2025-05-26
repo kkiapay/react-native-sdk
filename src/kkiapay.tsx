@@ -1,7 +1,8 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
-
+import { launchWave } from './linking';
+import { WAVE_LINK } from './typings';
 import React from 'react';
 
 console.log(React);
@@ -150,6 +151,10 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
   const handleMessage = (message: any) => {
     if (message && message.nativeEvent && message.nativeEvent.data) {
       const response = JSON.parse(message.nativeEvent.data);
+      if (response.name === WAVE_LINK && response.data) {
+        launchWave(response.data);
+        return;
+      }
       const event = response.name as ListenerEventName;
       if (defaultEvent.current)
         defaultEvent.current({ name: event, data: response.data });
