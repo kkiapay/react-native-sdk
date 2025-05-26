@@ -9,6 +9,7 @@ export interface IData {
   countries?: string[];
   paymentMethods?: string[];
   paymentmethod?: string[];
+  providers?: { accept?: string[]; exclude?: string[] };
   fullname?: string;
   name?: string;
   email?: string;
