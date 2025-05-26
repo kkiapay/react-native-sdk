@@ -1,6 +1,6 @@
 {
   "name": "@kkiapay-org/react-native-sdk",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -70,7 +70,7 @@
     "react-native": "0.71.6",
     "react-native-builder-bob": "^0.20.0",
     "release-it": "^19.0.2",
-    "typescript": "^4.5.2"
+    "typescript": "^5.8.3"
   },
   "resolutions": {
     "@types/react": "17.0.21"
