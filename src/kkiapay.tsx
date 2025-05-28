@@ -200,7 +200,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
           onMessage={handleMessage}
         />
       )}
-      {!widgetOpened && <View style={styles.container}>{children}</View>}
+      {!widgetOpened && children}
     </KkiapayContext.Provider>
   );
 }
