@@ -1,3 +1,3 @@
 export * from './kkiapay';
 export * from './typings';
-export * from './linking'
+export * from './linking';
