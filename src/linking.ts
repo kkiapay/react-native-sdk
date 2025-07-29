@@ -1,18 +1,7 @@
-import { Linking, Platform } from 'react-native';
-import { WAVE_STORE_REDIRECT_URI, APP_STORE_REDIRECT_URI } from './typings';
+import { Linking } from 'react-native';
 
 export const launchWave = async (url: string): Promise<boolean> => {
   try {
-    const canOpen = await Linking.canOpenURL(url);
-    if (canOpen) {
-      const storeUrl =
-        Platform.OS === 'ios'
-          ? APP_STORE_REDIRECT_URI
-          : WAVE_STORE_REDIRECT_URI;
-      await Linking.openURL(storeUrl);
-      return true;
-    }
-
     await Linking.openURL(url);
     return true;
   } catch (error) {
