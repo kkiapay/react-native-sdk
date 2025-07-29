@@ -1,4 +1,9 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import {
+  StyleSheet,
+  StatusBar,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
 import { launchWave } from './linking';
@@ -194,11 +199,25 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
       }}
     >
       {widgetOpened && (
-        <WebView
-          style={{ ...styles.container, marginTop: StatusBar.currentHeight }}
-          source={{ uri }}
-          onMessage={handleMessage}
-        />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.keyboardAvoidingContainer}
+          keyboardVerticalOffset={StatusBar.currentHeight || 0}
+        >
+          <WebView
+            style={styles.webview}
+            source={{ uri }}
+            onMessage={handleMessage}
+            allowsInlineMediaPlayback
+            javaScriptEnabled
+            domStorageEnabled
+            startInLoadingState
+            originWhitelist={['*']}
+            mixedContentMode="compatibility"
+            androidHardwareAccelerationDisabled={false}
+            androidLayerType="hardware"
+          />
+        </KeyboardAvoidingView>
       )}
       {!widgetOpened && children}
     </KkiapayContext.Provider>
@@ -206,10 +225,24 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '100%',
+  },
+  keyboardAvoidingContainer: {
+    flex: 1,
+  },
+  webview: {
+    flex: 1,
   },
 });

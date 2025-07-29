@@ -8,14 +8,14 @@ export default function TestComponent() {
   const openWidget = () => {
     openKkiapayWidget({
       amount: 100,
-      key: '3425dc6035d711eca8f5b92f2997955b',
+      key: 'your_api_key',
       sandbox: true,
       reason: 'Payment',
     });
   };
 
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Button title="Pay now" onPress={openWidget} />
     </View>
   );
