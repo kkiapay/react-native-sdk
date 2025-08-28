@@ -157,6 +157,7 @@
   },
   "dependencies": {
     "@kkiapay-org/react-native-sdk": "^0.1.5",
+    "react-native-safe-area-context": "^5.6.1",
     "react-native-webview": "^13.6.3"
   },
   "overrides": {

@@ -8,6 +8,7 @@ import WebView from 'react-native-webview';
 import { Buffer } from 'buffer';
 import { launchWave } from './linking';
 import { WAVE_LINK } from './typings';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
 
 console.log(React);
@@ -199,25 +200,27 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
       }}
     >
       {widgetOpened && (
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={styles.keyboardAvoidingContainer}
-          keyboardVerticalOffset={StatusBar.currentHeight || 0}
-        >
-          <WebView
-            style={styles.webview}
-            source={{ uri }}
-            onMessage={handleMessage}
-            allowsInlineMediaPlayback
-            javaScriptEnabled
-            domStorageEnabled
-            startInLoadingState
-            originWhitelist={['*']}
-            mixedContentMode="compatibility"
-            androidHardwareAccelerationDisabled={false}
-            androidLayerType="hardware"
-          />
-        </KeyboardAvoidingView>
+        <SafeAreaView style={styles.container}>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={styles.keyboardAvoidingContainer}
+            keyboardVerticalOffset={StatusBar.currentHeight || 0}
+          >
+            <WebView
+              style={styles.webview}
+              source={{ uri }}
+              onMessage={handleMessage}
+              allowsInlineMediaPlayback
+              javaScriptEnabled
+              domStorageEnabled
+              startInLoadingState
+              originWhitelist={['*']}
+              mixedContentMode="compatibility"
+              androidHardwareAccelerationDisabled={false}
+              androidLayerType="hardware"
+            />
+          </KeyboardAvoidingView>
+        </SafeAreaView>
       )}
       {!widgetOpened && children}
     </KkiapayContext.Provider>
