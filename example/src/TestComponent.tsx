@@ -9,7 +9,7 @@ export default function TestComponent() {
     openKkiapayWidget({
       amount: 100,
       key: 'your_api_key',
-      sandbox: true,
+      sandbox: false,
       reason: 'Payment',
     });
   };
