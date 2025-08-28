@@ -8,7 +8,7 @@ export default function TestComponent() {
   const openWidget = () => {
     openKkiapayWidget({
       amount: 100,
-      key: 'LprYUAyMpfAjq4z2yTHPiY0b6XktIQ',
+      key: 'your_api_key',
       sandbox: false,
       reason: 'Payment',
     });
