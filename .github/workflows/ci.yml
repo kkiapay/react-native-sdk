@@ -23,6 +23,9 @@ jobs:
       - name: Enable corepack
         run: corepack enable
 
+      - name: Clear yarn cache
+        run: yarn cache clean
+
       - name: Setup
         uses: ./.github/actions/setup
 
