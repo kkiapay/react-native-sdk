@@ -1,4 +1,4 @@
-import { Button } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { useKkiapay } from 'src/kkiapay';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
