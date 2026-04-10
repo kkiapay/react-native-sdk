@@ -2561,24 +2561,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kkiapay-org/react-native-sdk@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "@kkiapay-org/react-native-sdk@npm:0.1.5"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-    react-native-webview: ^13.12.0
-  checksum: 10c0/f2b21814fe5c3cdd04ca891b0dc4264a5eca394af23271b9d80ebbc27d4bd1c6b1bea3e0c9378ba1b3ff2a593b93dc7abfd374061abf84028b31203f4a2fca42
-  languageName: node
-  linkType: hard
-
 "@kkiapay-org/react-native-sdk@workspace:.":
   version: 0.0.0-use.local
   resolution: "@kkiapay-org/react-native-sdk@workspace:."
   dependencies:
     "@commitlint/config-conventional": "npm:^17.0.2"
     "@evilmartians/lefthook": "npm:^1.2.2"
-    "@kkiapay-org/react-native-sdk": "npm:^0.1.5"
     "@react-native-community/eslint-config": "npm:^3.0.2"
     "@release-it/conventional-changelog": "npm:^10.0.1"
     "@types/jest": "npm:^28.1.2"
