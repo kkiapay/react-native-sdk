@@ -77,7 +77,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
 
   const openKkiapayWidget = (config: IData) => {
     if (config.verbose) {
-      console.info('config', config);
+      console.info('CONFIG', config);
     }
 
     let finalUri =
@@ -86,7 +86,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
     if (config.verbose) {
       console.info('WIDGET_URI', finalUri);
     }
-    setUri(uri);
+    setUri(finalUri);
     setTimeout(() => {
       isWidgetOpened(true);
     }, 0);
