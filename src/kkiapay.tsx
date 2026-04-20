@@ -86,7 +86,7 @@ export function KkiapayProvider({ children }: PropsWithChildren<any>) {
     if (config.verbose) {
       console.info('WIDGET_URI', finalUri);
     }
-    setUri(uri);
+    setUri(finalUri);
     setTimeout(() => {
       isWidgetOpened(true);
     }, 0);
