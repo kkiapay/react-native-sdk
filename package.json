@@ -41,7 +41,7 @@
     "android"
   ],
   "repository": "https://github.com/kkiapay/react-native-sdk.git",
-  "author": "asaje379 <salemaffa@gmail.com> (https://github.com/asaje379)",
+  "author": "kkiapay",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kkiapay/react-native-sdk.git/issues"
